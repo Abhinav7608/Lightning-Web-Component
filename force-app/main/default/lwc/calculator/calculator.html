@@ -1,11 +1,17 @@
 <template>
+    <form>
     <div class="calculator-container">
+        <lightning-button-icon
+            icon-name="utility:refresh"
+            variant="bare"
+            onclick={handleRefresh}
+            class="reload-icon"
+            alternative-text="Refresh Component">
+        </lightning-button-icon>
         <p class="title">Calculator</p>
-        <h1>Practice</h1>
-        <h2>Hi</h2>
         <div class="input-container">
-            <lightning-input type="number" label="First Number" placeholder="Enter Your first number" class="input-field"></lightning-input>
-            <lightning-input type="number" label="Second Number" placeholder="Enter Your second number" class="input-field"></lightning-input>
+            <lightning-input type="number" label="First Number" placeholder="Enter Your first number" class="input-field" onchange={handleFirstNumberChange}></lightning-input>
+            <lightning-input type="number" label="Second Number" placeholder="Enter Your second number" class="input-field" onchange={handleSecondNumberChange}></lightning-input>
         </div>
         <div class="button-container">
             <lightning-button 
@@ -31,4 +37,5 @@
             <p>Result: {result}</p>
         </div>
     </div>
+</form>
 </template>

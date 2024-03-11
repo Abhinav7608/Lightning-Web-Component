@@ -1,43 +1,31 @@
 <template>
-    <form>
-    <div class="container">
-        <lightning-button-icon
-            icon-name="utility:refresh"
-            variant="bare"
-            onclick={handleRefresh}
-            class="reload-icon"
-            alternative-text="Refresh Component">
-        </lightning-button-icon>
-        <div class="header-row">
-            <h1>Calculator</h1>
-        </div>
-        <div class="main-container">
+    <div class="calculator">
+        <input type="text" class="display" readonly value={displayValue}>
+        <div class="buttons">
             <div class="row">
-                <div class="column">
-                    <lightning-input type="number" label="First Number" placeholder="Enter Your first number" class="input-field" onchange={handleFirstNumberChange}></lightning-input>
-                </div>
-                <div class="column">
-                    <lightning-input type="number" label="Second Number" placeholder="Enter Your second number" class="input-field" onchange={handleSecondNumberChange}></lightning-input>
-                </div>
+                <lightning-button class="number" label="7" onclick={addToDisplay} data-value="7"></lightning-button>
+                <lightning-button class="number" label="8" onclick={addToDisplay} data-value="8"></lightning-button>
+                <lightning-button class="number" label="9" onclick={addToDisplay} data-value="9"></lightning-button>
+                <lightning-button class="operator" label="+" onclick={addToDisplay} data-value="+"></lightning-button>
             </div>
             <div class="row">
-                <div class="column">
-                    <lightning-button variant="brand" label="Add" onclick={handleClick} class="calc-button"></lightning-button>
-                </div>
-                <div class="column">
-                    <lightning-button variant="brand" label="Subtract" onclick={handleClick} class="calc-button"></lightning-button>
-                </div>
-                <div class="column">
-                    <lightning-button variant="brand" label="Multiply" onclick={handleClick} class="calc-button"></lightning-button>
-                </div>
-                <div class="column">
-                    <lightning-button variant="brand" label="Divide" onclick={handleClick} class="calc-button"></lightning-button>
-                </div>
+                <lightning-button class="number" label="4" onclick={addToDisplay} data-value="4"></lightning-button>
+                <lightning-button class="number" label="5" onclick={addToDisplay} data-value="5"></lightning-button>
+                <lightning-button class="number" label="6" onclick={addToDisplay} data-value="6"></lightning-button>
+                <lightning-button class="operator" label="-" onclick={addToDisplay} data-value="-"></lightning-button>
             </div>
-        </div>
-        <div class="result" if:true={showResult}>
-            <p>Result: {result}</p>
+            <div class="row">
+                <lightning-button class="number" label="1" onclick={addToDisplay} data-value="1"></lightning-button>
+                <lightning-button class="number" label="2" onclick={addToDisplay} data-value="2"></lightning-button>
+                <lightning-button class="number" label="3" onclick={addToDisplay} data-value="3"></lightning-button>
+                <lightning-button class="operator" label="*" onclick={addToDisplay} data-value="*"></lightning-button>
+            </div>
+            <div class="row">
+                <lightning-button class="clear" label="C" onclick={clearDisplay}></lightning-button>
+                <lightning-button class="number" label="0" onclick={addToDisplay} data-value="0"></lightning-button>
+                <lightning-button class="operator" label="/" onclick={addToDisplay} data-value="/"></lightning-button>
+                <lightning-button class="calculate" label="=" onclick={calculate}></lightning-button>
+            </div>
         </div>
     </div>
-</form>
 </template>

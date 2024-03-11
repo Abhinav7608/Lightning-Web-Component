@@ -1,35 +1,22 @@
 import { LightningElement, track } from 'lwc';
 
 export default class Calculator extends LightningElement {
-    @track firstNumber;
-    @track secondNumber;
-    @track result;
-    @track showResult = false;
+    @track displayValue = '';
 
-    handleFirstNumberChange(event) {
-        this.firstNumber = parseInt(event.target.value);
+    addToDisplay(event) {
+        const value = event.target.dataset.value;
+        this.displayValue += value;
     }
 
-    handleSecondNumberChange(event) {
-        this.secondNumber = parseInt(event.target.value);
+    clearDisplay() {
+        this.displayValue = '';
     }
 
-    handleClick(event) {
-        const operation = event.target.label;
-        if (operation === 'Add') {
-            this.result = this.firstNumber + this.secondNumber;
-        } else if (operation === 'Subtract') {
-            this.result = this.firstNumber - this.secondNumber;
-        } else if (operation === 'Multiply') {
-            this.result = this.firstNumber * this.secondNumber;
-        }else if (operation === 'Divide') {
-            this.result = this.firstNumber / this.secondNumber;
+    calculate() {
+        try {
+            this.displayValue = eval(this.displayValue);
+        } catch (error) {
+            this.displayValue = 'Error';
         }
-        this.showResult = true;
-    }
-    handleRefresh() {
-        this.template.querySelector('form').reset();
-        this.result = '';
-        this.showResult = false;
     }
 }

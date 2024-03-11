@@ -22,6 +22,8 @@ export default class Calculator extends LightningElement {
             this.result = this.firstNumber - this.secondNumber;
         } else if (operation === 'Multiply') {
             this.result = this.firstNumber * this.secondNumber;
+        }else if (operation === 'Divide') {
+            this.result = this.firstNumber / this.secondNumber;
         }
         this.showResult = true;
     }
